@@ -1,0 +1,11 @@
+Button
+VideoStreamPlayer
+AudioStreamPlayer2D
+AudioListener2D
+Label
+Panel
+CanvasLayer
+ColorRect
+CollisionShape2D
+Area2D
+Sprite2D
