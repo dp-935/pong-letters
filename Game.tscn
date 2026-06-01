@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://dn6w2kvp8sdhl"]
+
+[ext_resource type="Script" uid="uid://dxhy7rj0v261m" path="res://Game.gd" id="1_u44n3"]
+[ext_resource type="Script" uid="uid://cptjlil1qll46" path="res://Ball.gd" id="1_xkndl"]
+[ext_resource type="VideoStream" uid="uid://c3pvf1gfn4l0t" path="res://xfbvfs.ogv" id="2_2vekm"]
+[ext_resource type="Texture2D" uid="uid://o14m2ox5v33x" path="res://RedBall.png" id="2_xkndl"]
+[ext_resource type="AudioStream" uid="uid://ni8nn05yrq22" path="res://start_music.mp3" id="4_sb48q"]
+[ext_resource type="AudioStream" uid="uid://bbmn6r81a42mq" path="res://correct.wav" id="5_r0x5m"]
+[ext_resource type="AudioStream" uid="uid://dscf78eur0dil" path="res://wrong.wav" id="6_3mrqo"]
+[ext_resource type="AudioStream" uid="uid://kfl3jv7jbkg7" path="res://hit.wav" id="7_3mrqo"]
+[ext_resource type="AudioStream" uid="uid://wti55x1aunri" path="res://honk-and-cymbal-crash.mp3" id="8_joorw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb48q"]
+radius = 20.0
+
+[node name="Game" type="Node2D" unique_id=534313530]
+script = ExtResource("1_u44n3")
+
+[node name="Ball" type="Area2D" parent="." unique_id=124712749]
+script = ExtResource("1_xkndl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1439986016]
+shape = SubResource("CircleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=2041482855]
+position = Vector2(2.3841858e-06, 0.49999976)
+scale = Vector2(0.08230452, 0.085416675)
+texture = ExtResource("2_xkndl")
+
+[node name="TopPaddle" type="ColorRect" parent="." unique_id=923432397]
+offset_left = 290.0
+offset_top = 60.0
+offset_right = 430.0
+offset_bottom = 80.0
+
+[node name="BottomPaddle" type="ColorRect" parent="." unique_id=843232374]
+offset_left = 290.0
+offset_top = 1195.0
+offset_right = 430.0
+offset_bottom = 1215.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=822987873]
+
+[node name="StartPanel" type="Panel" parent="UI" unique_id=1303761674]
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="TitleLabel" type="Label" parent="UI/StartPanel" unique_id=335878079]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 255.0
+offset_right = 487.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 78
+text = "PONG
+"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="UI/StartPanel" unique_id=685246426]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 711.0
+offset_right = 460.0
+offset_bottom = 801.0
+theme_override_font_sizes/font_size = 40
+text = "START"
+
+[node name="ProgressLabel" type="Label" parent="UI" unique_id=564472390]
+offset_left = 300.0
+offset_top = 520.0
+offset_right = 440.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 68
+text = "_ _ _ _"
+
+[node name="PButton" type="Button" parent="UI" unique_id=1754666059]
+offset_left = 80.0
+offset_top = 980.0
+offset_right = 160.0
+offset_bottom = 1060.0
+text = "P"
+
+[node name="OButton" type="Button" parent="UI" unique_id=1257683845]
+offset_left = 230.0
+offset_top = 980.0
+offset_right = 310.0
+offset_bottom = 1060.0
+text = "O"
+
+[node name="NButton" type="Button" parent="UI" unique_id=2107812960]
+offset_left = 380.0
+offset_top = 980.0
+offset_right = 460.0
+offset_bottom = 1060.0
+text = "N"
+
+[node name="GButton" type="Button" parent="UI" unique_id=1429007752]
+offset_left = 530.0
+offset_top = 980.0
+offset_right = 610.0
+offset_bottom = 1060.0
+text = "G"
+
+[node name="GameOverLabel" type="Label" parent="UI" unique_id=615236931]
+offset_left = 192.0
+offset_top = 560.0
+offset_right = 284.0
+offset_bottom = 583.0
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=840884031]
+offset_right = 136.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+
+[node name="CountdownLabel" type="Label" parent="UI" unique_id=1529092948]
+offset_left = 310.0
+offset_top = 520.0
+offset_right = 365.0
+offset_bottom = 652.0
+theme_override_font_sizes/font_size = 96
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnTimerLabel" type="Label" parent="UI" unique_id=658027966]
+offset_top = 170.0
+offset_right = 720.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 36
+text = "Time: 0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI" unique_id=1752623112]
+offset_left = 240.0
+offset_top = 700.0
+offset_right = 480.0
+offset_bottom = 740.0
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="UI" unique_id=1935764879]
+offset_left = 240.0
+offset_top = 810.0
+offset_right = 480.0
+offset_bottom = 900.0
+theme_override_font_sizes/font_size = 36
+text = "MAIN MENU"
+
+[node name="FinalScoreLabel" type="Label" parent="UI" unique_id=1880276145]
+offset_left = 230.0
+offset_top = 472.0
+offset_right = 496.0
+offset_bottom = 530.0
+theme_override_font_sizes/font_size = 42
+text = "Final Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CornerTouchZone" type="Button" parent="UI" unique_id=1347137638]
+offset_left = 660.0
+offset_right = 720.0
+offset_bottom = 60.0
+text = "Store"
+
+[node name="TutorialOverlay" type="VideoStreamPlayer" parent="UI" unique_id=844497672]
+offset_left = -1.5258789e-05
+offset_right = 1080.0
+offset_bottom = 1920.0
+scale = Vector2(0.666702, 0.666641)
+stream = ExtResource("2_2vekm")
+
+[node name="StartScreenMusic" type="AudioStreamPlayer2D" parent="." unique_id=344624363]
+stream = ExtResource("4_sb48q")
+volume_db = -8.0
+
+[node name="CorrectLetterSound" type="AudioStreamPlayer2D" parent="." unique_id=286431928]
+stream = ExtResource("5_r0x5m")
+
+[node name="WrongLetterSound" type="AudioStreamPlayer2D" parent="." unique_id=340068201]
+stream = ExtResource("6_3mrqo")
+volume_db = 11.0
+
+[node name="BallHitSound" type="AudioStreamPlayer2D" parent="." unique_id=296583167]
+stream = ExtResource("7_3mrqo")
+volume_db = 15.0
+pitch_scale = 2.75
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="." unique_id=1597053548]
+stream = ExtResource("8_joorw")
+
+[connection signal="pressed" from="UI/PButton" to="." method="_on_p_button_pressed"]
+[connection signal="pressed" from="UI/OButton" to="." method="_on_o_button_pressed"]
+[connection signal="pressed" from="UI/NButton" to="." method="_on_n_button_pressed"]
+[connection signal="pressed" from="UI/GButton" to="." method="_on_g_button_pressed"]

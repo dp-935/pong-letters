@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dn6w2kvp8sdhl"]
+
+[ext_resource type="Script" uid="uid://dxhy7rj0v261m" path="res://Game.gd" id="1_u44n3"]
+[ext_resource type="Script" uid="uid://cptjlil1qll46" path="res://Ball.gd" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://o14m2ox5v33x" path="res://RedBall.png" id="2_xkndl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb48q"]
+radius = 20.0
+
+[node name="Game" type="Node2D" unique_id=534313530]
+script = ExtResource("1_u44n3")
+
+[node name="Ball" type="Area2D" parent="." unique_id=124712749]
+script = ExtResource("1_xkndl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1439986016]
+shape = SubResource("CircleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=2041482855]
+position = Vector2(2.3841858e-06, 0.49999976)
+scale = Vector2(0.08230452, 0.085416675)
+texture = ExtResource("2_xkndl")
+
+[node name="TopPaddle" type="ColorRect" parent="." unique_id=923432397]
+offset_left = 290.0
+offset_top = 60.0
+offset_right = 430.0
+offset_bottom = 80.0
+
+[node name="BottomPaddle" type="ColorRect" parent="." unique_id=843232374]
+offset_left = 290.0
+offset_top = 1195.0
+offset_right = 430.0
+offset_bottom = 1215.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=822987873]
+
+[node name="ProgressLabel" type="Label" parent="UI" unique_id=564472390]
+offset_left = 290.0
+offset_top = 520.0
+offset_right = 430.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 48
+text = "_ _ _ _"
+
+[node name="PButton" type="Button" parent="UI" unique_id=1754666059]
+offset_left = 80.0
+offset_top = 980.0
+offset_right = 160.0
+offset_bottom = 1060.0
+text = "P"
+
+[node name="OButton" type="Button" parent="UI" unique_id=1257683845]
+offset_left = 230.0
+offset_top = 980.0
+offset_right = 310.0
+offset_bottom = 1060.0
+text = "O"
+
+[node name="NButton" type="Button" parent="UI" unique_id=2107812960]
+offset_left = 380.0
+offset_top = 980.0
+offset_right = 460.0
+offset_bottom = 1060.0
+text = "N"
+
+[node name="GButton" type="Button" parent="UI" unique_id=1429007752]
+offset_left = 530.0
+offset_top = 980.0
+offset_right = 610.0
+offset_bottom = 1060.0
+text = "G"
+
+[node name="GameOverLabel" type="Label" parent="UI" unique_id=615236931]
+offset_left = 192.0
+offset_top = 560.0
+offset_right = 284.0
+offset_bottom = 583.0
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=840884031]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 91.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+
+[node name="CountdownLabel" type="Label" parent="UI" unique_id=1529092948]
+offset_left = 320.0
+offset_top = 520.0
+offset_right = 360.0
+offset_bottom = 543.0
+theme_override_font_sizes/font_size = 96
+text = "3"
+
+[connection signal="pressed" from="UI/PButton" to="." method="_on_p_button_pressed"]
+[connection signal="pressed" from="UI/OButton" to="." method="_on_o_button_pressed"]
+[connection signal="pressed" from="UI/NButton" to="." method="_on_n_button_pressed"]
+[connection signal="pressed" from="UI/GButton" to="." method="_on_g_button_pressed"]
